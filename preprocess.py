@@ -22,9 +22,7 @@ def preprocess(in_sentence, language):
     """
     # TODO: Implement Function
     out_sentence = in_sentence
-    print("Original sentence: " + "'" + out_sentence + "'")
     out_sentence = re.sub(r'([' + re.escape(punct) + r']+)', r' \1 ', out_sentence)
-    print("Split punct sentence: " + "'" + out_sentence + "'")
     if(language == 'f'):
         out_sentence = out_sentence.replace("l'", "l' ")
         out_sentence = out_sentence.replace("qu'", "qu' ")
@@ -36,4 +34,3 @@ def preprocess(in_sentence, language):
     out_sentence = re.sub(r'([ ]+)', " ", out_sentence)
     return out_sentence
 
-print(preprocess("hello, there. l'aime t'aime qu'est puisqu'on", "f"))
