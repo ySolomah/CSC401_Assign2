@@ -38,22 +38,20 @@ def lm_train(data_dir, language, fn_LM):
                 with open(data_dir + "/" + filename) as train_data:
                     for line in train_data:
                         line = preprocess(line, language)
+                        words = line.split()
                         for word in line.split():
                             if word in LM['uni']:
                                 LM['uni'][word] = LM['uni'][word] + 1
                             else:
                                 LM['uni'][word] = 1
 
-                        lines = line.split()
-                        lines.append("NULL_END")
-                        prevWord = "NULL_START"
-                        for word in lines:
-                            if not prevWord in LM['bi']:
-                                LM['bi'][prevWord] = {}
-                            if word in LM['bi'][prevWord]:
-                                LM['bi'][prevWord][word] = LM['bi'][prevWord][word] + 1
+                        for i in range(len(words)-1):
+                            if not words[i] in LM['bi']:
+                                LM['bi'][words[i]] = {}
+                            if words[i+1] in LM['bi'][words[i]]:
+                                LM['bi'][words[i]][words[i+1]] = LM['bi'][words[i]][words[i+1]] + 1
                             else:
-                                LM['bi'][prevWord][word] = 1
+                                LM['bi'][words[i]][words[i+1]] = 1
                             prevWord = word
                         
 
@@ -71,4 +69,3 @@ def lm_train(data_dir, language, fn_LM):
     '''
     return LM
 
-lm_train("/u/cs401/A2_SMT/data/Hansard/Training/", 'e', "langModelEnglish")

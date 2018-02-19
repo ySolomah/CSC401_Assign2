@@ -32,5 +32,7 @@ def preprocess(in_sentence, language):
         out_sentence = out_sentence.replace("lorsqu'il", "lorsqu' il")
         out_sentence = re.sub(r'([b-df-hj-np-tv-xz]){1}(\')', r'\1\2 ', out_sentence)
     out_sentence = re.sub(r'([ ]+)', " ", out_sentence)
+
+    out_sentence = "NULL_START " + out_sentence + " NULL_END"
     return out_sentence
 
