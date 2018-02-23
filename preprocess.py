@@ -6,7 +6,7 @@ punct = string.punctuation
 punct = punct.replace("'", "");
 print(punct)
 
-def preprocess(in_sentence, language):
+def preprocess(in_sentence, language, add_null=False):
     """ 
     This function preprocesses the input text according to language-specific rules.
     Specifically, we separate contractions according to the source language, convert
@@ -32,7 +32,7 @@ def preprocess(in_sentence, language):
         out_sentence = out_sentence.replace("lorsqu'il", "lorsqu' il")
         out_sentence = re.sub(r'([b-df-hj-np-tv-xz]){1}(\')', r'\1\2 ', out_sentence)
     out_sentence = re.sub(r'([ ]+)', " ", out_sentence)
-
-    out_sentence = "NULL_START " + out_sentence + " NULL_END"
+    if(add_null):
+        out_sentence = "SENTSTART " + out_sentence + " SENTEND"
     return out_sentence
 

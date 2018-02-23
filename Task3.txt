@@ -1,0 +1,78 @@
+As shown below, one can derive the following generalized relations:
+-Increasing delta will increase perplexity of well-formed sentences, since it adds probability to illformed sentences
+-Training perplexity is lower than testing (except for delta = 0, due to the fact we ignore -inf perplexity)
+-Increasing delta decreases perplexity difference between testing and training, as they both 'move closer' to the same value
+-Comparing two sentences "The salad James said?" to "The general said.", it becomes quite clear that well-formed sentences \
+    part of the corpa will have much lower perplexity.
+
+
+Sentence:  The salad James said?  with delta:  0.33
+Perplexity:  45896.13661898578
+
+Sentence:  The general said.  with delta:  0.33
+Perplexity:  1919.0249277703756
+
+english  :   with delta  0.33
+Test preplexity:  101.15448120479657
+Train preplexity:  93.7121027397508
+
+french  :   with delta  0.33
+Test preplexity:  110.56587466571145
+Train preplexity:  103.68166098219459
+
+
+
+
+
+
+Sentence:  The salad James said?  with delta:  0.66
+Perplexity:  51264.90268409888
+
+Sentence:  The general said.  with delta:  0.66
+Perplexity:  3125.144999342422
+
+english  :   with delta  0.66
+Test preplexity:  135.26077739702063
+Train preplexity:  130.18686343561882
+
+french  :   with delta  0.66
+Test preplexity:  151.5757821367535
+Train preplexity:  147.16404373242787
+
+
+
+
+
+
+Sentence:  The salad James said?  with delta:  1.0
+Perplexity:  56685.588008714985
+
+Sentence:  The general said.  with delta:  1.0
+Perplexity:  4298.207285858245
+
+english  :   with delta  1.0
+Test preplexity:  164.12807990869507
+Train preplexity:  161.09915473032666
+
+french  :   with delta  1.0
+Test preplexity:  186.9021121701313
+Train preplexity:  184.76378068350823
+
+
+
+
+
+
+Sentence:  The salad James said?  with delta:  0.0
+Perplexity:  INF
+
+Sentence:  The general said.  with delta:  0.0
+Perplexity:  392.7635012228243
+
+english  :   with delta  0.0
+Test preplexity:  12.778343841420206
+Train preplexity:  21.749450808753693
+
+french  :   with delta  0.0
+Test preplexity:  13.070587373631222
+Train preplexity:  21.517310304278556

@@ -37,7 +37,7 @@ def lm_train(data_dir, language, fn_LM):
             if(filename.endswith(language)):
                 with open(data_dir + "/" + filename) as train_data:
                     for line in train_data:
-                        line = preprocess(line, language)
+                        line = preprocess(line, language, add_null=True)
                         words = line.split()
                         for word in line.split():
                             if word in LM['uni']:
@@ -68,4 +68,6 @@ def lm_train(data_dir, language, fn_LM):
             print("     Second word: " + key2 + " with total count: " + str(val2))
     '''
     return LM
+
+
 
